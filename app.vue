@@ -1,12 +1,11 @@
-<script setup lang="ts">
-const config = useAppConfig()
-const runtime = useRuntimeConfig()
-const hello = ref(runtime.public.apiurl)
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
+
+<style>
+@import url('~/assets/style/main.css');
+</style>

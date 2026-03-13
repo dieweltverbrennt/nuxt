@@ -1,0 +1,13 @@
+:root {
+  --font: 'Roboto', sans-serif;
+  --color-accent: #a18a68;
+  --color-black: #000000;
+  --color-black-hover: #222222;
+  --color-white: #ffffff;
+  --color-gray: #e6e6e6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
