@@ -1,34 +1,45 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Post } from '~/interfaces/post.interface'
+const post = defineProps<Post>()
+</script>
 
 <template>
   <div class="card">
     <div class="card__header">
-      <img src="" alt="" class="card__img" />
+      <div class="card__avatar">
+        <img src="" alt="" class="card__img" />
+      </div>
       <div class="card__username">PurpleSchool</div>
       <div class="card__date">4 дня назад</div>
     </div>
-    <h3 class="card__title">Добавить функцию голосования</h3>
+    <h3 class="card__title">{{ post.title }}</h3>
     <p class="card__text">
-      Попробовать добавить в приложение функцию голосования, которая позволит
-      определить, какая фича более полезна, а какая нет. После добавления поста
-      появляется...
+      {{ post.content }}
     </p>
     <div class="card__marks">
-      <div class="card__like">10 <IconHandUp /></div>
-      <div class="card__dislike">1 <IconHandDown /></div>
+      <div class="card__like">{{ post.likes }} <IconHandUp /></div>
+      <div class="card__dislike">{{ post.dislikes }} <IconHandDown /></div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.card {
+  max-width: 692px;
+}
 .card__header {
   display: flex;
+  align-items: center;
 }
-.card__img {
+.card__avatar {
   width: 24px;
   height: 24px;
   border-radius: 50%;
   margin-right: 8px;
+  background-color: var(--color-gray);
+}
+.card__img {
+  width: 100%;
 }
 .card__username {
   font-family: 'Roboto';
@@ -62,9 +73,11 @@
 .card__like {
   display: flex;
   gap: 6px;
+  cursor: pointer;
 }
 .card__dislike {
   display: flex;
   gap: 6px;
+  cursor: pointer;
 }
 </style>
