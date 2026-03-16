@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     token: '',
     public: {
-      apiurl: '',
+      apiurl: 'http://localhost:8080',
       imageurl: '',
     },
   },
