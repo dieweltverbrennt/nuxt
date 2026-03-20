@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+packge-lock.json
 
 # Node dependencies
 node_modules

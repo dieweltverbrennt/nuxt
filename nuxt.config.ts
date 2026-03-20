@@ -3,5 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   app: { pageTransition: { name: 'page', mode: 'default' } },
+  runtimeConfig: {
+    token: '',
+    public: {
+      apiurl: 'http://localhost:8080',
+      imageurl: '',
+    },
+  },
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/scripts'],
 })
