@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { GetPostsResponse } from '~/interfaces/post.interface'
 import { useDebounceFn } from '@vueuse/core'
+import { useActionsStore } from '~/store/actions.store'
 
+const actionsStore = useActionsStore()
 const config = useRuntimeConfig()
 const API_URL = config.public.apiurl
 const route = useRoute()
@@ -31,17 +33,23 @@ watch([page, sort], () => {
 })
 
 const changeRoute = useDebounceFn((page, sort) => {
-  console.log(page.value)
-
   router.replace({
     query: { page: page.value, sort: sort.value },
   })
 }, 100)
 
-const { data } = useFetch<GetPostsResponse>(API_URL + '/posts', {
+const { data, refresh } = useFetch<GetPostsResponse>(API_URL + '/posts', {
   key: 'get-posts',
   query,
 })
+
+watch(
+  () => actionsStore.actions,
+  () => {
+    refresh()
+  },
+  { deep: true },
+)
 
 const pages = computed(() => {
   return data.value ? data.value.total_pages : 1

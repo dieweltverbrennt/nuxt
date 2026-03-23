@@ -18,7 +18,7 @@ const isActive = (type: 'liked' | 'disliked') => {
 }
 
 const reaction = (type: 'liked' | 'disliked') => {
-  actionsStore.addToActions({ id: post.id, action: type })
+  actionsStore.toggleAction({ id: post.id, action: type })
 }
 </script>
 
@@ -106,15 +106,17 @@ const reaction = (type: 'liked' | 'disliked') => {
   gap: 6px;
   cursor: pointer;
 }
-.card__like--active {
-  border: 1px solid #4c9aff;
+.card__like.card__like--active svg {
+  fill: #ff6b6b !important;
+  stroke: #ff6b6b !important;
 }
 .card__dislike {
   display: flex;
   gap: 6px;
   cursor: pointer;
 }
-.card__dislike--active {
-  border: 1px solid #ff6b6b;
+.card__dislike.card__dislike--active svg {
+  fill: #ff6b6b !important;
+  stroke: #ff6b6b !important;
 }
 </style>

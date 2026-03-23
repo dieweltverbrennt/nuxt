@@ -12,11 +12,12 @@ export const useActionsStore = defineStore(
     const actions = ref<Action[]>([])
 
     const addToActions = async (action: Action) => {
+      console.log('add')
       const config = useRuntimeConfig()
       const API_URL = config.public.apiurl
 
       const data = await $fetch<{ post: Post }>(
-        `${API_URL}/post/${action.id}/${action.action === 'liked' ? 'like' : 'dislike'}`,
+        `${API_URL}/posts/${action.id}/${action.action === 'liked' ? 'like' : 'dislike'}`,
         {
           method: 'POST',
         },
@@ -26,15 +27,21 @@ export const useActionsStore = defineStore(
     }
 
     const removeFromActions = (id: number) => {
+      console.log('remove')
+
       actions.value = actions.value.filter((item) => item.id !== id)
     }
 
     const toggleAction = (action: Action) => {
       const act = actions.value.find((item) => item.id === action.id)
+
       if (act) {
-        addToActions(action)
-      } else {
         removeFromActions(action.id)
+        if (act.action !== action.action) {
+          addToActions(action)
+        }
+      } else {
+        addToActions(action)
       }
     }
 
