@@ -1,6 +1,25 @@
 <script setup lang="ts">
 import type { Post } from '~/interfaces/post.interface'
+import { useActionsStore } from '~/store/actions.store'
+
+const config = useRuntimeConfig()
+const API_URL = config.public.apiurl
+const actionsStore = useActionsStore()
 const post = defineProps<Post>()
+
+const reactioned = computed(() => {
+  return actionsStore.actions
+})
+
+const isActive = (type: 'liked' | 'disliked') => {
+  return reactioned.value.some(
+    (action) => action.id === post.id && action.action === type,
+  )
+}
+
+const reaction = (type: 'liked' | 'disliked') => {
+  actionsStore.toggleAction({ id: post.id, action: type })
+}
 </script>
 
 <template>
@@ -17,8 +36,20 @@ const post = defineProps<Post>()
       {{ post.content }}
     </p>
     <div class="card__marks">
-      <div class="card__like">{{ post.likes }} <IconHandUp /></div>
-      <div class="card__dislike">{{ post.dislikes }} <IconHandDown /></div>
+      <div
+        class="card__like"
+        :class="{ 'card__like--active': isActive('liked') }"
+        @click="reaction('liked')"
+      >
+        {{ post.likes }} <IconHandUp />
+      </div>
+      <div
+        class="card__dislike"
+        :class="{ 'card__dislike--active': isActive('disliked') }"
+        @click="reaction('disliked')"
+      >
+        {{ post.dislikes }} <IconHandDown />
+      </div>
     </div>
   </div>
 </template>
@@ -75,9 +106,17 @@ const post = defineProps<Post>()
   gap: 6px;
   cursor: pointer;
 }
+.card__like.card__like--active svg {
+  fill: #ff6b6b !important;
+  stroke: #ff6b6b !important;
+}
 .card__dislike {
   display: flex;
   gap: 6px;
   cursor: pointer;
+}
+.card__dislike.card__dislike--active svg {
+  fill: #ff6b6b !important;
+  stroke: #ff6b6b !important;
 }
 </style>
