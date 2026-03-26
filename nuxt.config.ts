@@ -10,5 +10,13 @@ export default defineNuxtConfig({
       imageurl: '',
     },
   },
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/scripts'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@pinia/nuxt',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
+  ],
 })
