@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GetPostsResponse } from '~/interfaces/post.interface'
 import { useDebounceFn } from '@vueuse/core'
-import { useActionsStore } from '~/store/actions.store'
+import { useActionsStore } from '~/stores/actions.store'
 
 const actionsStore = useActionsStore()
 const config = useRuntimeConfig()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '~/interfaces/post.interface'
-import { useActionsStore } from '~/store/actions.store'
+import { useActionsStore } from '~/stores/actions.store'
 
 const config = useRuntimeConfig()
 const API_URL = config.public.apiurl
