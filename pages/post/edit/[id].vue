@@ -2,9 +2,9 @@
 definePageMeta({ middleware: 'auth' })
 
 useSeoMeta({
-  title: 'Авторизация',
-  description: 'Авторизация в VoteApp',
-  ogDescription: 'Авторизация в VoteApp',
+  title: 'Редактирование поста',
+  description: 'Редактирование поста',
+  ogDescription: 'Редактирование поста',
 })
 </script>
 
