@@ -4,6 +4,12 @@ import { useAPI } from '~/composables/useAPI'
 import type { LoginResponse } from '~/interfaces/auth.interface'
 const authStore = useAuthStore()
 
+useSeoMeta({
+  title: 'Авторизация',
+  description: 'Авторизация в VoteApp',
+  ogDescription: 'Авторизация в VoteApp',
+})
+
 const { API_URL } = useAPI()
 const email = ref('')
 const password = ref('')

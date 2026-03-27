@@ -3,6 +3,12 @@ import type { GetPostsResponse } from '~/interfaces/post.interface'
 import { useDebounceFn } from '@vueuse/core'
 import { useActionsStore } from '~/stores/actions.store'
 
+useSeoMeta({
+  title: 'VoteApp',
+  description: 'Приложение для голосования',
+  ogDescription: 'Приложение для голосования',
+})
+
 const actionsStore = useActionsStore()
 const config = useRuntimeConfig()
 const API_URL = config.public.apiurl

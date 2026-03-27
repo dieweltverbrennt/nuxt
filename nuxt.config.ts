@@ -2,7 +2,16 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  app: { pageTransition: { name: 'page', mode: 'default' } },
+  app: {
+    head: {
+      title: 'VoteApp',
+      titleTemplate: '%s | VoteApp',
+      htmlAttrs: {
+        lang: 'ru',
+      },
+    },
+    pageTransition: { name: 'page', mode: 'default' },
+  },
   runtimeConfig: {
     token: '',
     public: {
