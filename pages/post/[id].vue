@@ -13,6 +13,12 @@ const { data } = useFetch<Post>(API_URL + `/posts/${postId}`)
 const post = computed(() => {
   return data.value ? data.value : null
 })
+
+useSeoMeta({
+  title: `Пост - ${data.value?.title}`,
+  description: `${data.value?.content}`,
+  ogDescription: `${data.value?.content}`,
+})
 </script>
 
 <template>
